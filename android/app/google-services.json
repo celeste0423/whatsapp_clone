@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "747323159225",
+    "firebase_url": "https://whatspapp-messenger-default-rtdb.firebaseio.com",
+    "project_id": "whatspapp-messenger",
+    "storage_bucket": "whatspapp-messenger.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:747323159225:android:28c45235babd05ad9c2168",
+        "android_client_info": {
+          "package_name": "com.example.whatsapp_clone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "747323159225-5isagkkft3tur3b68vmlt0t3pm4hcb60.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtaSE1wrlTgJNRbyoKCnfX22JcboIiMHM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "747323159225-5isagkkft3tur3b68vmlt0t3pm4hcb60.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "747323159225-bereege46rnav1c8iroo6bn0dvva4dfq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.whatsappClone"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
