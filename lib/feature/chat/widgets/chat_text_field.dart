@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:whatsapp_clone/common/enum/message_type.dart';
 import 'package:whatsapp_clone/common/extension/custom_theme_extension.dart';
 import 'package:whatsapp_clone/common/utils/coloors.dart';
 import 'package:whatsapp_clone/common/widgets/custom_icon_button.dart';
+import 'package:whatsapp_clone/feature/auth/pages/image_picker_page.dart';
 import 'package:whatsapp_clone/feature/chat/controller/chat_controller.dart';
 
 class ChatTextField extends ConsumerStatefulWidget {
@@ -26,6 +28,39 @@ class _ChatTextFieldState extends ConsumerState<ChatTextField> {
   bool isMessageIconEnabled = false;
   double cardHeight = 0;
 
+  void sendImageMessageFromGallery() async {
+    final image = await Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => const ImagePickerPage(),
+        ));
+
+    if (image != null) {
+      sendFileMessage(image, MessageType.image);
+      setState(() => cardHeight = 0);
+    }
+  }
+
+  void sendFileMessage(var file, MessageType messageType) async {
+    ref.read(chatControllerProvider).sendFileMessage(
+          context,
+          file,
+          widget.receiverId,
+          messageType,
+        );
+
+    await Future.delayed(const Duration(milliseconds: 500));
+    //SchedulerBinding : 현재 프레임이 끝나고 다음 프레임이 그려진 후에 실행되어야 하는 작업을 예약할 때 사용
+    SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
+      //스크롤 컨트롤러의 위치를 최대까지 이동
+      widget.scrollController.animateTo(
+        widget.scrollController.position.maxScrollExtent,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeOut,
+      );
+    });
+  }
+
   void sendTextMessage() async {
     if (isMessageIconEnabled) {
       ref.read(chatControllerProvider).sendTextMessage(
@@ -36,13 +71,13 @@ class _ChatTextFieldState extends ConsumerState<ChatTextField> {
       messageController.clear();
     }
 
-    await Future.delayed(Duration(milliseconds: 100));
+    await Future.delayed(const Duration(milliseconds: 100));
     //SchedulerBinding : 현재 프레임이 끝나고 다음 프레임이 그려진 후에 실행되어야 하는 작업을 예약할 때 사용
     SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
       //스크롤 컨트롤러의 위치를 최대까지 이동
       widget.scrollController.animateTo(
         widget.scrollController.position.maxScrollExtent,
-        duration: Duration(milliseconds: 300),
+        duration: const Duration(milliseconds: 300),
         curve: Curves.easeOut,
       );
     });
@@ -66,7 +101,7 @@ class _ChatTextFieldState extends ConsumerState<ChatTextField> {
             width: 1,
           ),
         ),
-        SizedBox(height: 5),
+        const SizedBox(height: 5),
         Text(
           text,
           style: TextStyle(
@@ -98,7 +133,7 @@ class _ChatTextFieldState extends ConsumerState<ChatTextField> {
           duration: const Duration(milliseconds: 200),
           height: cardHeight,
           width: double.maxFinite,
-          margin: EdgeInsets.symmetric(horizontal: 10),
+          margin: const EdgeInsets.symmetric(horizontal: 10),
           decoration: BoxDecoration(
             color: context.theme.receiverChatCardBg,
             borderRadius: BorderRadius.circular(20),
@@ -114,23 +149,23 @@ class _ChatTextFieldState extends ConsumerState<ChatTextField> {
                         onPressed: () {},
                         icon: Icons.book,
                         text: 'File',
-                        background: Color(0xFF7F66FE),
+                        background: const Color(0xFF7F66FE),
                       ),
                       iconWithText(
                         onPressed: () {},
                         icon: Icons.camera_alt,
                         text: 'Camera',
-                        background: Color(0xFFFE2E74),
+                        background: const Color(0xFFFE2E74),
                       ),
                       iconWithText(
-                        onPressed: () {},
+                        onPressed: sendImageMessageFromGallery,
                         icon: Icons.photo,
                         text: 'Gallary',
-                        background: Color(0xFFC861F9),
+                        background: const Color(0xFFC861F9),
                       )
                     ],
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -138,19 +173,19 @@ class _ChatTextFieldState extends ConsumerState<ChatTextField> {
                         onPressed: () {},
                         icon: Icons.headphones,
                         text: 'Audio',
-                        background: Color(0xFFF96533),
+                        background: const Color(0xFFF96533),
                       ),
                       iconWithText(
                         onPressed: () {},
                         icon: Icons.location_on,
                         text: 'Location',
-                        background: Color(0xFF1FA855),
+                        background: const Color(0xFF1FA855),
                       ),
                       iconWithText(
                         onPressed: () {},
                         icon: Icons.person,
                         text: 'Contact',
-                        background: Color(0xFF009DE1),
+                        background: const Color(0xFF009DE1),
                       )
                     ],
                   ),

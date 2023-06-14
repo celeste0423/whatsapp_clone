@@ -5,7 +5,6 @@ import 'package:custom_clippers/custom_clippers.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:intl/intl.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:whatsapp_clone/common/extension/custom_theme_extension.dart';
 import 'package:whatsapp_clone/common/helper/last_seen_message.dart';
@@ -16,6 +15,7 @@ import 'package:whatsapp_clone/feature/auth/controller/auth_controller.dart';
 import 'package:whatsapp_clone/feature/chat/controller/chat_controller.dart';
 import 'package:whatsapp_clone/feature/chat/widgets/chat_text_field.dart';
 import 'package:whatsapp_clone/feature/chat/widgets/message_card.dart';
+import 'package:whatsapp_clone/feature/chat/widgets/show_date_card.dart';
 import 'package:whatsapp_clone/feature/chat/widgets/yellow_card.dart';
 
 //페이지의 상태를 저장할 수 있음
@@ -228,19 +228,7 @@ class ChatPage extends ConsumerWidget {
                         children: [
                           if (index == 0) const YellowCard(),
                           if (isShowDateCard)
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 10,
-                                vertical: 5,
-                              ),
-                              margin: const EdgeInsets.symmetric(vertical: 10),
-                              decoration: BoxDecoration(
-                                color: context.theme.receiverChatCardBg,
-                              ),
-                              child: Text(
-                                DateFormat.yMMMd().format(message.timeSent),
-                              ),
-                            ),
+                            ShowDateCard(date: message.timeSent),
                           MessageCard(
                             isSender: isSender,
                             haveNip: haveNip,
