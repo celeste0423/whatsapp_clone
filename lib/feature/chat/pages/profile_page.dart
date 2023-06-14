@@ -104,7 +104,7 @@ class ProfilePage extends StatelessWidget {
                 const SizedBox(height: 20),
                 ListTile(
                   leading: CustomIconButton(
-                    onTap: () {},
+                    onPressed: () {},
                     icon: Icons.group,
                     background: Coloors.greenDark,
                     iconColor: Colors.white,
@@ -227,7 +227,7 @@ class SliverPersistentDelegate extends SliverPersistentHeaderDelegate {
               right: 0,
               top: MediaQuery.of(context).viewPadding.top + 5,
               child: CustomIconButton(
-                onTap: () {},
+                onPressed: () {},
                 icon: Icons.more_vert,
                 iconColor: percent2 > .3
                     ? Colors.white.withOpacity(percent2)

@@ -25,7 +25,7 @@ class MessageModel {
       receiverId: map["receiverId"],
       textMessage: map["textMessage"],
       type: (map["type"] as String).toEnum(),
-      timeSent: DateTime.fromMillisecondsSinceEpoch(map["timeSent"]),
+      timeSent: DateTime.parse(map["timeSent"]),
       //parse 는 문자열을 DateTime으로 바꿈
       messageId: map["messageId"],
       isSeen: map["isSeen"] ?? false,

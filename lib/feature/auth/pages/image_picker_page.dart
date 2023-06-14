@@ -101,7 +101,7 @@ class _ImagePickerPageState extends State<ImagePickerPage> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.background,
         leading: CustomIconButton(
-          onTap: () => Navigator.pop(context),
+          onPressed: () => Navigator.pop(context),
           icon: Icons.arrow_back,
         ),
         title: Text(
@@ -112,7 +112,7 @@ class _ImagePickerPageState extends State<ImagePickerPage> {
         ),
         actions: [
           CustomIconButton(
-            onTap: () {},
+            onPressed: () {},
             icon: Icons.more_vert,
           )
         ],

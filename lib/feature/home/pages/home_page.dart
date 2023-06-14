@@ -2,8 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:whatsapp_clone/common/widgets/custom_icon_button.dart';
 import 'package:whatsapp_clone/feature/auth/controller/auth_controller.dart';
 import 'package:whatsapp_clone/feature/home/pages/call_home_page.dart';
@@ -56,8 +54,8 @@ class _HomePageState extends ConsumerState<HomePage> {
           ),
           elevation: 1,
           actions: [
-            CustomIconButton(onTap: () {}, icon: Icons.search),
-            CustomIconButton(onTap: () {}, icon: Icons.more_vert),
+            CustomIconButton(onPressed: () {}, icon: Icons.search),
+            CustomIconButton(onPressed: () {}, icon: Icons.more_vert),
           ],
           bottom: const TabBar(
             indicatorWeight: 3,

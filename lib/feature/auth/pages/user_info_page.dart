@@ -72,7 +72,7 @@ class _UserInfoPageState extends ConsumerState<UserInfoPage> {
                 ),
                 const Spacer(),
                 CustomIconButton(
-                  onTap: () => Navigator.pop(context),
+                  onPressed: () => Navigator.pop(context),
                   icon: Icons.close,
                 ),
                 const SizedBox(width: 15),
@@ -136,7 +136,7 @@ class _UserInfoPageState extends ConsumerState<UserInfoPage> {
     return Column(
       children: [
         CustomIconButton(
-          onTap: onTap,
+          onPressed: onTap,
           icon: icon,
           iconColor: Coloors.greenDark,
           minWidth: 50,

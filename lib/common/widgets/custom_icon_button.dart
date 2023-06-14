@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp_clone/common/extension/custom_theme_extension.dart';
 
 class CustomIconButton extends StatelessWidget {
-  final VoidCallback onTap;
+  final VoidCallback onPressed;
   final IconData icon;
   final Color? iconColor;
   final double? iconSize;
@@ -12,7 +11,7 @@ class CustomIconButton extends StatelessWidget {
 
   const CustomIconButton({
     super.key,
-    required this.onTap,
+    required this.onPressed,
     required this.icon,
     this.iconColor,
     this.iconSize,
@@ -30,7 +29,7 @@ class CustomIconButton extends StatelessWidget {
         border: border,
       ),
       child: IconButton(
-        onPressed: onTap,
+        onPressed: onPressed,
         splashColor: Colors.transparent,
         splashRadius: (minWidth ?? 45) - 25,
         iconSize: iconSize,
