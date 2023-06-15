@@ -121,6 +121,7 @@ class _ImagePickerPageState extends State<ImagePickerPage> {
         padding: const EdgeInsets.all(5),
         child: NotificationListener<ScrollNotification>(
           //child의 notification을 감지, 콜백 함수 실현
+          //onNotification의 반환값은 bool
           onNotification: (ScrollNotification scroll) {
             handleScrollEvent(scroll);
             return true; //자식 위젯에서 이어서 이벤트 처리 가능

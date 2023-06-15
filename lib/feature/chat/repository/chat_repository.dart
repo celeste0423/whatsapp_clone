@@ -60,9 +60,9 @@ class ChatRepository {
           lastMessage = 'GIF message';
           break;
       }
-
       saveToMessageCollection(
         receiverId: receiverId,
+        //이미지 url을 메시지 내용으로 포함
         textMessage: imageUrl,
         timeSent: timeSent,
         textMessageId: messageId,
@@ -70,7 +70,6 @@ class ChatRepository {
         receiverUsername: receiverUserData.username,
         messageType: messageType,
       );
-
       saveAsLastMessage(
         senderUserData: senderData,
         receiverUserData: receiverUserData,
